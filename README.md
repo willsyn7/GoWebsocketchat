@@ -54,10 +54,10 @@ git checkout dev
 # Sync latest dev branch changes from GitHub dev (from other developers) into your local dev repo
 git pull origin dev
 
-# Create your feature branch, this will alo switch you into your new feature branch
+# Create your feature branch, this will also switch you into your new feature branch
 git checkout -b [your-name/feature-name]
 
-# Work on your new feature files and when you are ready at least stages all of the changes you've made before proceeding 
+# Work on your new feature files and when you are ready at least stage all of the changes you've made before proceeding 
 # At this point in the workflow, you are ready to push your new feature branch to the GitHub. Before doing that you need
 # to sync with the GitHub dev branch to bring your local repo up to date with the latest changes. Go back to the dev branch.
 git checkout dev
@@ -69,11 +69,11 @@ git pull origin dev
 git checkout [your-name/feature-name]
 
 # Now merge any changes that have happened in the dev branch into your feature branch
-# This is where merge conflict may occur
+# This is where merge conflicts may occur
 # You will have to resolve any/all merge conflicts, but hopefully there are none 
 git merge dev
 
-# After merging and resolving any conflict you can push your feature branch to GitHub
+# After merging and resolving any conflicts you can push your feature branch to GitHub
 git push origin dev
 
 # At this point your feature branch should be GitHub and you will need to create a pull request
