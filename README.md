@@ -62,11 +62,12 @@ git checkout -b [your-name/feature-name]
 
 # Work on your new feature files and when you are ready at least stage all of the changes
 # you've made before proceeding.
-# At this point in the workflow, you are ready to push your new feature branch to
-# the GitHub.
+#
+# At this point in the workflow, you are ready to push your new feature branch to GitHub.
 # Before pushing your feature to GitHub you will need to sync with the GitHub dev branch
-# to bring your local dev repo up to date with latest changes. So now go back to your
-# local dev branch.
+# to bring your local dev repo up to date with latest changes.
+#
+# So now go back to your local dev branch.
 git checkout dev
 
 # Sync the latest changes from GitHub dev to bring your local dev up to date.
@@ -84,7 +85,8 @@ git merge dev
 git push origin dev
 
 # At this point your feature branch should be GitHub and you will need to create a pull request
-# so that your feature branch can be merged into the GitGub dev branch
+# specifically for your feature branch so that the branch can be merged into the GitGub dev branch.
+#
 # The pull request is necessary so that GitHub dev gets your feature changes and other developers
 # can pickup your changes.
 #
