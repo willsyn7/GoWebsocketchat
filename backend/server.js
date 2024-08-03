@@ -5,7 +5,7 @@ const path = require("path");
 const db = require("./config/db.js");
 const productsRoutes = require("./routes/productRoutes.js");
 const userRoutes = require('./routes/userRoutes');
-require("dotenv").config();
+require("dotenv").config(); 
 
 db();
 app.use(express.json());
