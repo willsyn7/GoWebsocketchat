@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema(
   {
@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
     },
     city: {
       type: String,
-      required: true,
+      required: true, 
     },
     zipcode: {
       type: String,
@@ -60,4 +60,4 @@ userSchema.pre('save', async function (next) {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = { User };
+module.exports = User ;
