@@ -17,7 +17,7 @@ Helper Functions
 Component
 =======================================================*/
 
-function NavBar() {
+function Navbar() {
   /*--------------- States/Hooks ---------------*/
   
   /*--------------- Return ---------------*/
@@ -35,4 +35,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navbar;
