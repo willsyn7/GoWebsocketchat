@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useLocation } from ''
 
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Home from './components/Home/Home.jsx';
+import Marketplace from './components/Marketplace/Marketplace.jsx';
+import Cart from './components/Cart/Cart.jsx';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
-      <NavBar />
+      <Navbar />
       <div>
         <Routes>
           <Route path='/' element={<Home />} />
