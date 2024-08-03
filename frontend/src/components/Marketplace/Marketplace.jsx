@@ -16,6 +16,7 @@ import './Marketplace.css';
 // Defines our Marketplace function 
 const Marketplace = () => {
 
+    // The URL used to fetch data
     const URL = 'http://localhost:5000';
 
     return (
