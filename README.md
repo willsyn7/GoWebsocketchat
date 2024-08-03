@@ -45,23 +45,28 @@ npm run build
 
 ## Developer Workflow
 
-The main branch is only for production. Developers will work only in the dev branch. The following workflow goes through the process of creating a feature branch through submitting the pull request.
+The main branch is only for production. Developers will work only in the dev branch. 
+The following workflow goes through the process of creating a feature branch through 
+submitting the pull request.
 
 ```
 # Start in the dev branch
 git checkout dev
 
-# Sync latest dev branch changes from GitHub dev (from other developers) into your local dev repo
+# Sync latest dev branch changes from GitHub dev (from other developers) into your local
+# dev repo
 git pull origin dev
 
 # Create your feature branch, this will also switch you into your new feature branch
 git checkout -b [your-name/feature-name]
 
-# Work on your new feature files and when you are ready at least stage all of the changes you've made
-# before proceeding.
-# At this point in the workflow, you are ready to push your new feature branch to the GitHub.
-# Before pushing your feature to GitHub you will need to sync with the GitHub dev branch to bring
-# your local dev repo up to date with latest changes. So now go back to your local dev branch.
+# Work on your new feature files and when you are ready at least stage all of the changes
+# you've made before proceeding.
+# At this point in the workflow, you are ready to push your new feature branch to
+# the GitHub.
+# Before pushing your feature to GitHub you will need to sync with the GitHub dev branch
+# to bring your local dev repo up to date with latest changes. So now go back to your
+# local dev branch.
 git checkout dev
 
 # Sync the latest changes from GitHub dev to bring your local dev up to date.
