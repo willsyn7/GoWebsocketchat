@@ -4,7 +4,7 @@ const {getProducts} = require('../controllers/productController');
 
 router.get('/products', getProducts,(req,res)=>{
 
-res.json(res.locals.allJobs)
+res.json(res.locals.allProducts)
 
 })
 
