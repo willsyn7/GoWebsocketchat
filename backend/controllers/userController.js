@@ -2,8 +2,7 @@ const User = require("../models/userModel.js");
 const jwt = require("jsonwebtoken");
 
 function generateAccessToken(user) {
-  const SECRET = "hellothere";
-  const token = jwt.sign(user, SECRET, { algorithm: "HS256" });
+  const token = jwt.sign(user, process.env.JWT_SECRET, { algorithm: "HS256" });
   return token;
 }
 
