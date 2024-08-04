@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 const port = 5000;
+require("dotenv").config();
 const path = require('path');
 const db = require('./config/db.js');
 const productsRoutes = require('./routes/productRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 const cartRoutes = require('./routes/cartRoutes.js');
-require('dotenv').config();
 
 db();
 app.use(express.json());
