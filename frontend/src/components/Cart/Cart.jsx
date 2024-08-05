@@ -36,10 +36,9 @@ function Cart() {
 
   // Re-render total
   useEffect (() => {
-    console.log('cart',cart)
     getCart()
     setCartTotal(calculateTotal(cart))
-  }, [cart])
+  });
 
   const removeItem = (id) => {
     const newCart = cart.filter(item => item.id !== id);
@@ -57,14 +56,13 @@ function Cart() {
     cartService.add(item)
   }
 
-
   const getCart = async () => {
     cartService.index()
     .then (data => {
       const newArr = [];
       setCart(() => {
-        for (let obj in data) {
-          newArr.push(obj);
+        for (let i = 0; i < data.products.length; i++) {
+          newArr.push(data.products[i]);
         }
         return newArr;
       })
