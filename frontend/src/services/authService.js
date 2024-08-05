@@ -3,32 +3,9 @@
 
 const BACKEND_URL = '/api'
 
-const testBackendConnection = async () => {
-    console.log('hit')
-    try {
-        const response = await fetch(`${BACKEND_URL}/users/ping`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            console.log('Backend response:', data);
-            return data;
-        } else {
-            console.error('Failed to connect to backend. Status:', response.status);
-            return null;
-        }
-    } catch (error) {
-        console.error('Error connecting to backend:', error);
-        return null;
-    }
-};
-
 const getUser = () => {
   const token = localStorage.getItem('jwtToken');
+  console.log('token',token)
   if (!token) return null;
   const user = JSON.parse(atob(token.split('.')[1]));
   return user;
@@ -47,7 +24,7 @@ const signup = async (formData) => {
       throw new Error(json.error);
     }
     console.log(json)
-    localStorage.setItem('token', json.jwtToken);
+    localStorage.setItem('jwtToken', json.jwtToken);
     return json;
   } catch (err) {
     throw new Error(err);
@@ -57,7 +34,7 @@ const signup = async (formData) => {
 const signin = async (user) => {
   console.log('signin')
   try {
-    const res = await fetch(`${BACKEND_URL}/auth/signin`, {
+    const res = await fetch(`${BACKEND_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
@@ -68,7 +45,7 @@ const signin = async (user) => {
     }
     console.log('json',json)
     if (json.jwtToken) {
-      localStorage.setItem('token', json.jwtToken);
+      localStorage.setItem('jwtToken', json.jwtToken);
       const user = JSON.parse(atob(json.jwtToken.split('.')[1]));
       return user;
     }
@@ -78,7 +55,7 @@ const signin = async (user) => {
 };
 
 const signout = () => {
-  localStorage.removeItem('token');
+  localStorage.removeItem('jwtToken');
 };
 
 export {
@@ -86,5 +63,4 @@ export {
     signin, 
     getUser, 
     signout,
-    testBackendConnection,
 };

@@ -1,27 +1,27 @@
 const BACKEND_URL = '/api'
 
-
 // view my cart
 const index = async () => {
     try {
-      const res = await fetch(`${BASE_URL}/cart`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      const res = await fetch(`${BACKEND_URL}/cart`, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${localStorage.getItem("jwtToken")}` },
       });
-      return res.json();
+      const data = await res.json();
+      return data;
     } catch (error) {
       console.log(error);
     }
   };
 
-
 // create a cart
 const create = async (formData) => {
     try {
         console.log('cart created')
-        const res = await fetch(`${BASE_URL}/cart`, {
+        const res = await fetch(`${BACKEND_URL}/cart`, {
             method: 'POST',
             headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
             'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
@@ -33,14 +33,62 @@ const create = async (formData) => {
 };
 
 
+const update = async (cart) => {
+  try{
+    console.log('update', cart)
+    const res = await fetch(`${BACKEND_URL}/cart/update`, {
+      method: 'PUT',
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cart),
+      });
+    return res.json()
+  } catch (error) {
+    console.log(error);
+  }
+}
 
+const add = async (newItem) => {
+  try{
+    console.log('add', newItem)
+    const res = await fetch(`${BACKEND_URL}/cart/add`, {
+      method: 'PUT',
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newItem),
+      });
+    return res.json()
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-// update a cart
-
-// 
+const order = async (cart) => {
+  try{
+    console.log('order', cart)
+    const res = await fetch(`${BACKEND_URL}/cart/order`, {
+      method: 'POST',
+      headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cart),
+      });
+    return res.json()
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 export {
-    signup, 
-    
+    index,
+    create,
+    update,
+    add,
+    order,
 };

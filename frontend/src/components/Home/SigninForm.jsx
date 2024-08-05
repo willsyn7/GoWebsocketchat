@@ -35,16 +35,9 @@ const SigninForm = (props) => {
       }
     };
 
-    const testBackEnd = async (e) => {
-        e.preventDefault();
-        console.log('hit')
-        authService.testBackendConnection();
-    }
-  
     return (
       <main>
         <div className = {styles.formHeader}>
-          <button onClick ={testBackEnd}>test backend</button>
           <h1>Log In</h1>
           <p>{message}</p>
         </div>
