@@ -20,8 +20,8 @@ const signup = async (formData) => {
       body: JSON.stringify(formData),
     });
     const json = await res.json();
-    if (json.error) {
-      throw new Error(json.error);
+    if (!res.ok) {
+      throw new Error(json.error || 'Username already exists!');
     }
     console.log(json)
     localStorage.setItem('jwtToken', json.jwtToken);

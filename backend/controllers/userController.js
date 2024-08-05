@@ -10,6 +10,10 @@ const userController = {
   async userRegister(req, res, next) {
     try {
       const { username, password } = req.body;
+      const dupeUser = await User.findOne({ username });
+      if (dupeUser) {
+        return res.status(409).json("duplicate");
+      }
       const user = await User.create({ username, password });
       const jwtToken = generateAccessToken({ id: user._id });
 
