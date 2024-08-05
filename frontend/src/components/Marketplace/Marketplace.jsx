@@ -7,8 +7,7 @@
  */
 
 // Importing necessary tools
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Product from './Product.jsx';
 
@@ -19,7 +18,10 @@ import './Marketplace.css';
 const Marketplace = () => {
     
     // Creates state array to store Product components
-    const [products, setProducts] = useState([]);
+    const [displayedProducts, setProducts] = useState([]);
+
+    // Creates a new array to hold all products returned from db
+    // const allProducts = [];
 
     // Function that sends a "GET" request to the DB to fetch product data
     const getComponents = () => {
@@ -29,15 +31,15 @@ const Marketplace = () => {
             .then(res => {
 
                 // Function that changes the state of products array
-                setProducts((currentProducts) => {
+                setProducts(() => {
 
                     // Saves the current array in newProducts
-                    const newProducts = currentProducts;
+                    const newProducts = [];
                     const arr = res.data;
                     // Pushes product components to an array passing in data as props
                     for (let i = 0; i < arr.length; i++) {
-                        newProducts.push(
-                        <Product
+                        const newProduct = (<Product
+                            product_id={arr[i]._id}
                             id={arr[i].id}
                             title={arr[i].title}
                             price={arr[i].price} 
@@ -45,9 +47,11 @@ const Marketplace = () => {
                             description={arr[i].description}
                             image={arr[i].image}
                             rating={arr[i].rating}
-                            key={crypto.randomUUID}
-                        />
-                        );
+                        />);
+
+                        // Pushes each product into allProducts array and displayedProducts arr
+                        newProducts.push(newProduct);
+                        // allProducts.push(newProducts);
                     }
                     return newProducts;
                 });
@@ -58,36 +62,16 @@ const Marketplace = () => {
                 alert(e);
             })
     };
+
     // Calls the getComponents function so we can render the products
     useEffect(() => {
         getComponents();
     });
 
-    // Function to add a product to user's cart
-    const addToCart = () => {
-
-    }
-    //         <div className='job-container'>
-    //   {iteration.map((jobContainer, index) => ( // ---> note that iteration is the passed down state from the prev component
-    //     <div key={index} className='jobcreator-cont'>
-    //       <h2>Iteration no: {jobContainer.iteration}</h2>
-    //       <button
-    //         className='delete-iteration-button'
-    //         onClick={() => deleteIteration(index)}
-    //       >
-    //         Delete
-    //       </button>
-    //       <JobCreator />
-    //     </div>
-    //   ))}
-    // </div>
-
     // Returns a styled div containing the rendered products
     return (
-        <div className="container">
-            <div className="productDisplay">
-                { products }
-            </div>
+        <div className="product-display">
+            { displayedProducts }
         </div>
     );
 };

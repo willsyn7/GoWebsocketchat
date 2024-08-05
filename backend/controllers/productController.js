@@ -5,11 +5,11 @@ let productController = {};
 productController.getProducts = async (req, res, next) => {
   
   try {
-    const prodcuts = await Product.find({});
-    res.json(prodcuts);
+    const products = await Product.find({});
+    res.json(products);
   } catch (err) {
     return next({
-      message: "error in getProdcuts: " + err,
+      message: "error in getProducts: " + err,
       log: err,
     });
   }

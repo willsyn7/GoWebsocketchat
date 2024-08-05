@@ -1,23 +1,61 @@
+// Importing required dependencies
+import axios from 'axios';
+import * as cartService from '../../services/cartService.js';
+
+
 /** 
  * This function takes properties passed from a parent and generates
  * a div to display the data
 */
 const Product = (props) => {
-    const objID = props._id;
+    const objID = props.product_id;
 
+
+    // Function that allows users to add an item to their cart
+    const addProductToCart = () => {
+        // Sends a "POST" request to DB with product's ID to be stored in user's cart
+        // axios.post('/api/cart', objID)
+        //     // Upon receiving a response, lets user know they added an item to their cart
+        //     .then(res => {
+        //         console.log(res);
+        //         if (res.status === 200) alert('Item successfully added to cart!');
+        //     })
+
+        //     // Catches any errors while sending post request
+        //     .catch(e => {
+        //         console.log(e);
+        //     })
+        // return;
+        cartService.create(objID);
+    }
+
+    // Returns a product div to be rendered in the marketplace
     return (
-        <>
-            <div className="product-box">
-                <h3>{props.title}</h3>
-                <img src={props.image}></img>
-                Price: {props.price}
-                <h3>Product ID: {props.id}</h3>
-                Category: {props.category}
-                Description: {props.description}
-                Rating: {props.rating}
-                <button onClick={null}>Add to Cart</button>
+        <div className="product-box">
+
+            <h3>
+                {props.title}
+            </h3>
+
+            <div className="image-container">            
+                <img src={props.image}/>
             </div>
-        </>
+
+
+            <h4>
+                ${props.price} USD
+                <button onClick={ addProductToCart }>
+                    Add to Cart
+                </button>
+                {/* Item Category: { props.category } */}
+            </h4>
+
+            {/* <div className="description-box">
+                {props.description}
+            </div> */}
+
+
+        </div>
     )
 }
 
