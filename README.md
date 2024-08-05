@@ -2,6 +2,16 @@
 
 This is for a SPA (Single Page Application) e-commerce solution that uses [Vite](https://vite.dev) and the MERN stack.
 
+## IMPORTANT
+
+When in development mode the application is configured to use port 3000 (frontend) and port 5000 (backend).
+On a Mac computer you will need to turn off AirPlay, as in the latest OS release AirPlay listens on ports 5000 & 7000.
+To turn off AirPlay on the Mac.
+
+- Open System Settings.
+- Search for 'AirPlay Receiver' and select it in the search results.
+- Toggle 'AirPlay Receiver' to the off position. This will free port 5000 on your system.
+
 ## Usage
 
 - Create a MongoDB database and obtain your `MongoDB URI` - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
@@ -84,7 +94,7 @@ git merge dev
 # After merging and resolving any conflicts you can push your feature branch to GitHub
 git push origin dev
 
-# At this point your feature branch should be GitHub and you will need to create a pull request
+# At this point your feature branch should be in GitHub and you will need to create a pull request
 # specifically for your feature branch so that the branch can be merged into the GitGub dev branch.
 #
 # The pull request is necessary so that GitHub dev gets your feature changes and other developers
