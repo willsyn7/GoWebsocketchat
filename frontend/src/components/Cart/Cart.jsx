@@ -41,11 +41,16 @@ function Cart() {
   });
 
   const removeItem = (id) => {
-    const newCart = cart.filter(item => item.id !== id);
-    setCart(newCart);
-    console.log(newCart)
-    cartService.update(newCart)
+    const index = cart.findIndex(item => item.id === id);
+    if (index !== -1) {
+      const newCart = [...cart];
+      newCart.splice(index, 1);
+      cartService.update(newCart);
+      getCart()
+      
+    }
   }
+  
 
   const handleCheckout = () => {
     cartService.order(cart)
