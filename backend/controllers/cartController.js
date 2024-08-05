@@ -10,10 +10,10 @@ cartController.createCart = async (req, res, next) => {
     const cartExists = await Cart.findOne({ user_id: userId });
 
     if (cartExists) {
-      cartExists.products = products;
+      cartExists.products = req.body;
       await cartExists.save();
     } else {
-      const cart = await Cart.create({ user_id: userId, products });
+      const cart = await Cart.create({ user_id: userId, products:req.body });
       return res.json(cart);
     }
     return res.json(cartExists);
