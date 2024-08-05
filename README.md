@@ -1,15 +1,15 @@
 # JawsomeMart
 
-This is for a SPA (Single Page Application) e-commerce solution that uses [Vite](https://vite.dev) and the MERN stack.
+This application is a React SPA (Single Page Application) e-commerce solution that uses [Vite](https://vite.dev) and the MERN stack.
 
 ## IMPORTANT
 
-When in development mode the application is configured to use port 3000 (frontend) and port 5000 (backend).
-On a Mac computer you will need to turn off AirPlay, as in the latest OS release AirPlay listens on ports 5000 & 7000.
-To turn off AirPlay on the Mac.
+When in development mode (see Env Variable section) the application is configured to use port 3000 (frontend) and port 5000 (backend).
+On a Mac computer you may need to turn off AirPlay, as in the recent Mac OS releases AirPlay listens on ports 5000 & 7000.
+In order to free port 5000 for use, to turn off AirPlay when using a Mac.
 
 - Open System Settings.
-- Search for 'AirPlay Receiver' and select it in the search results.
+- Search for 'AirPlay Receiver' and select that option in the search results.
 - Toggle 'AirPlay Receiver' to the off position. This will free port 5000 on your system.
 
 ## Usage
@@ -33,11 +33,14 @@ JWT_SECRET = 'abc123'
 npm install
 cd frontend
 npm install
+cd ..
 ```
 
-### Run
+### Running the frontend & backend
 
 ```
+# these commands are run in the root directory of the project
+
 # Run frontend (:3000) & backend (:5000)
 npm run dev
 
