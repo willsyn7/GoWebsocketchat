@@ -29,14 +29,15 @@ Component
 
 function Cart() {
 
-  // const [cart, setCart] = useState(cartService.index())
-  const [cart, setCart] = useState(data.slice(0,5))
+  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState(data.slice(0,5))
   const [cartTotal, setCartTotal] = useState(calculateTotal(cart))
   const [orderPlacedMessage, setOrderPlacedMesage] = useState('')
 
   // Re-render total
   useEffect (() => {
     console.log('cart',cart)
+    getCart()
     setCartTotal(calculateTotal(cart))
   }, [cart])
 
@@ -58,8 +59,19 @@ function Cart() {
 
 
   const getCart = async () => {
-    const userCart = await cartService.index()
-    console.log('userCart return', userCart)
+    cartService.index()
+    .then (data => {
+      const newArr = [];
+      setCart(() => {
+        for (let obj in data) {
+          newArr.push(obj);
+        }
+        return newArr;
+      })
+    })
+    .catch(e => {
+      alert(e);
+    })
   }
 
   const createCart = async () => {
