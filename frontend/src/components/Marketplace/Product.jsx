@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-
-
+/** 
+ * This function takes properties passed from a parent and generates
+ * a div to display the data
+*/
 const Product = (props) => {
+    const objID = props._id;
 
     return (
-        <div>
-            <p>
-                ID : {props.id}
+        <>
+            <div className="product-box">
+                <h3>{props.title}</h3>
+                <img src={props.image}></img>
                 Price: {props.price}
-                Title: {props.title}
+                <h3>Product ID: {props.id}</h3>
                 Category: {props.category}
                 Description: {props.description}
-                Image: {props.image}
                 Rating: {props.rating}
-            </p>    
-        </div>
+                <button onClick={null}>Add to Cart</button>
+            </div>
+        </>
     )
 }
 
+// Exports the Product constructor
 export default Product;
