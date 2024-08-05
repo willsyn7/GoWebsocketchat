@@ -17,21 +17,21 @@ cartController.createCart = async (req, res, next) => {
 };
 //66b0f72b14fdaeafe0b10927
 cartController.addCart = async (req, res, next) => {
-  try {
-    const userId = req.user.id;
-    const productId = req.body.id;
-    const cartExists = await Cart.findOne({ user_id: userId });
-    console.log('cartExists: ', cartExists);
-    cartExists.products.push(productId);
-    await cartExists.save();
-    res.json(cartExists);
-  } catch (err) {
-    return next({
-      message: 'error in addCart: ' + err,
-      log: err,
-    });
-  }
-};
+    try {
+      const userId = req.user.id;
+      const productId = req.body.id;
+      const cartExists = await Cart.findOne({ user_id: userId });
+      console.log('cartExists: ', cartExists);
+      cartExists.products.push(productId);
+      await cartExists.save();
+      res.json(cartExists);
+    } catch (err) {
+      return next({
+        message: 'error in addCart: ' + err,
+        log: err,
+      });
+    }
+  };
 
 cartController.getCart = async (req, res, next) => {
   try {
