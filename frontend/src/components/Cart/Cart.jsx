@@ -68,46 +68,64 @@ function Cart() {
 
   return (
     <>
-      <button onClick={getCart}>See Cart</button>
-      <button onClick={createCart}>Create Cart</button>
+      <div className={styles.cartContainer}> 
+        {/* <button onClick={getCart}>See Cart</button>
+        <button onClick={createCart}>Create Cart</button> */}
 
-      <div>
-        <h2>Checkout Total: ${cartTotal}</h2>
-        <h2>{orderPlacedMessage}</h2>
-        {cart && cart.length > 0 &&
-          <button onClick={handleCheckout}>Place Order</button>
-        }
-      </div>
-
-      <div className = {styles.cartContainer}>
-        <h2>Cart Items</h2>
-
-        {cart && cart.length > 0 ? (
-          cart.map((item,ind) => (
-            <div className = {styles.itemContainer} key={ind}>
-
-              <div className ={styles.itemCard}>
-                <div className = {styles.imgContainer}>
-                  <img src={item.image} alt={item.title}/>
-                </div>
-                <div className = {styles.itemDetails}>
-                  <p>{item.title}</p>
-                  <p>Price: ${item.price}</p>
-                </div>
-              </div>
-              <div className ={styles.buttonContainer}>
-                <button onClick={() => addItem(item)}>Add</button>
-                <button onClick={() => removeItem(item.id)}>Remove</button>
-              </div>
-
-            </div>
-          ))
+        <div className={styles.totalContainer}>
           
+          
+          
+          <div className={styles.totalDetails}>
+            
+            <div></div>
+            <div></div>
+            <h2>Order Total:</h2>
+            <h2>${(cartTotal * 1.05).toFixed(2)}</h2>
+            <p>Items({cart.length})</p>
+            <p>${cartTotal}</p>
+            <p>Estimated Tax</p>
+            <p>${(cartTotal * 0.05).toFixed(2)}</p>
 
-          ) : (
-            <h4>Add items to your cart! Visit our marketplace</h4>
-        )}
+          </div>
 
+
+          <h2>{orderPlacedMessage}</h2>
+          {cart && cart.length > 0 &&
+            <button onClick={handleCheckout}>Place Order</button>
+          }
+        </div>
+
+        <div className = {styles.cart}>
+          <h2>Cart Items</h2>
+
+          {cart && cart.length > 0 ? (
+            cart.map((item,ind) => (
+              <div className = {styles.itemContainer} key={ind}>
+
+                <div className ={styles.itemCard}>
+                  <div className = {styles.imgContainer}>
+                    <img src={item.image} alt={item.title}/>
+                  </div>
+                  <div className = {styles.itemDetails}>
+                    <p>{item.title}</p>
+                    <p>Price: ${item.price}</p>
+                  </div>
+                </div>
+                <div className ={styles.buttonContainer}>
+                  {/* <button onClick={() => addItem(item)}>Add</button> */}
+                  <button onClick={() => removeItem(item.id)}>Remove</button>
+                </div>
+
+              </div>
+            ))
+            
+
+            ) : (
+              <h4>Add items to your cart! Visit our marketplace</h4>
+          )}
+
+        </div>
       </div>
        
 
