@@ -32,7 +32,7 @@ const create = async (formData) => {
     }
 };
 
-
+// remove an item from the cart
 const update = async (cart) => {
   try{
     console.log('update', cart)
@@ -49,6 +49,7 @@ const update = async (cart) => {
     console.log(error);
   }
 }
+
 
 const add = async (newItem) => {
   try{
