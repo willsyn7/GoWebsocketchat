@@ -6,7 +6,8 @@ cartController.createCart = async (req, res, next) => {
   try {
     const userId = res.locals.data.user.id;
     const cart = await Cart.create({ user_id: userId, products: [] });
-    return res.json(cart);
+    // return res.json(cart);
+    return next()
   } catch (err) {
     return next({
       message: 'error in createCart: ' + err,
