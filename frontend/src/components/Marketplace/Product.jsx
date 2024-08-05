@@ -1,7 +1,6 @@
 // Importing required dependencies
-import axios from 'axios';
 import * as cartService from '../../services/cartService.js';
-
+// import axios from 'axios';
 
 /** 
  * This function takes properties passed from a parent and generates
@@ -26,7 +25,7 @@ const Product = (props) => {
         //         console.log(e);
         //     })
         // return;
-        cartService.create(objID);
+        cartService.add({id: objID});
     }
 
     // Returns a product div to be rendered in the marketplace
