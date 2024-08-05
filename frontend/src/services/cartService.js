@@ -36,8 +36,8 @@ const create = async (formData) => {
 const update = async (cart) => {
   try{
     console.log('update', cart)
-    const res = await fetch(`${BACKEND_URL}/cart/update`, {
-      method: 'PUT',
+    const res = await fetch(`${BACKEND_URL}/cart/delete`, {
+      method: 'POST',
       headers: {
           Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
           'Content-Type': 'application/json',

@@ -43,6 +43,7 @@ function Cart() {
   const removeItem = (id) => {
     const newCart = cart.filter(item => item.id !== id);
     setCart(newCart);
+    console.log(newCart)
     cartService.update(newCart)
   }
 
