@@ -66,7 +66,8 @@ const Marketplace = () => {
     // Calls the getComponents function so we can render the products
     useEffect(() => {
         getComponents();
-    });
+        console.log("hit")
+    }, []);
 
     // Returns a styled div containing the rendered products
     return (
