@@ -8,6 +8,7 @@ const index = async () => {
         headers: { Authorization: `Bearer ${localStorage.getItem("jwtToken")}` },
       });
       const data = await res.json();
+     
       return data;
     } catch (error) {
       console.log(error);
